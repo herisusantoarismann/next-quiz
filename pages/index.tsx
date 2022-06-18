@@ -9,15 +9,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 import ImagesearchRollerIcon from "@mui/icons-material/ImagesearchRoller";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
-import FastfoodIcon from "@mui/icons-material/Fastfood";
-import SchoolIcon from "@mui/icons-material/School";
-import TerrainIcon from "@mui/icons-material/Terrain";
-import HistoryIcon from "@mui/icons-material/History";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import ScienceIcon from "@mui/icons-material/Science";
-import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
-import SportsIcon from "@mui/icons-material/Sports";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import { categories } from "../utils/categories";
@@ -30,6 +21,7 @@ const Home: NextPage = () => {
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",
+        background: "#EBECEF",
       }}
     >
       <AppBar position="static" style={{ backgroundColor: "#FFFFFF" }}>
@@ -46,7 +38,12 @@ const Home: NextPage = () => {
       </AppBar>
       <Box style={{ margin: "1rem" }}>
         <Box>
-          <Typography variant="body1" color="black" component="div">
+          <Typography
+            variant="subtitle1"
+            color="black"
+            component="div"
+            style={{ fontWeight: "700" }}
+          >
             Random Quiz
           </Typography>
           <Box
@@ -73,9 +70,14 @@ const Home: NextPage = () => {
             </Card>
           </Box>
         </Box>
-        <Box>
-          <Typography variant="body1" color="black" component="div">
-            Random Quiz
+        <Box style={{ marginTop: "1rem" }}>
+          <Typography
+            variant="body1"
+            color="black"
+            component="div"
+            style={{ fontWeight: "700" }}
+          >
+            Category
           </Typography>
           <Box
             style={{
@@ -93,7 +95,7 @@ const Home: NextPage = () => {
                     <Typography variant="body2" color="text.secondary">
                       {category.name}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" color="#0668FE">
                       Take a quiz{" "}
                       <ArrowForwardIosIcon style={{ fontSize: "0.6em" }} />
                     </Typography>
