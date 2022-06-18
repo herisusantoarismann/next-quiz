@@ -8,6 +8,15 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 import ImagesearchRollerIcon from "@mui/icons-material/ImagesearchRoller";
+import LiveTvIcon from "@mui/icons-material/LiveTv";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
+import SchoolIcon from "@mui/icons-material/School";
+import TerrainIcon from "@mui/icons-material/Terrain";
+import HistoryIcon from "@mui/icons-material/History";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import ScienceIcon from "@mui/icons-material/Science";
+import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
+import SportsIcon from "@mui/icons-material/Sports";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import { category } from "../utils/category";
