@@ -62,4 +62,6 @@ const categories = [
   },
 ];
 
-export { categories };
+const randomQuiz = [{ name: "Random", icon: <ImagesearchRollerIcon /> }];
+
+export { categories, randomQuiz };
