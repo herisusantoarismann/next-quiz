@@ -1,3 +1,4 @@
+import React from "react";
 import type { NextPage } from "next";
 
 import AppBar from "@mui/material/AppBar";
@@ -19,7 +20,7 @@ import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact
 import SportsIcon from "@mui/icons-material/Sports";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import { category } from "../utils/category";
+import { categories } from "../utils/categories";
 
 const Home: NextPage = () => {
   return (
@@ -84,20 +85,22 @@ const Home: NextPage = () => {
               padding: "0.5rem 0",
             }}
           >
-            <Card style={{ textAlign: "center" }}>
-              <CardContent>
-                <Typography component="div">
-                  <ImagesearchRollerIcon style={{ fontSize: "2em" }} />
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Movies
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  Take a quiz{" "}
-                  <ArrowForwardIosIcon style={{ fontSize: "0.6em" }} />
-                </Typography>
-              </CardContent>
-            </Card>
+            {categories.map((category) => {
+              return (
+                <Card style={{ textAlign: "center" }}>
+                  <CardContent>
+                    <Typography component="div">{category.icon}</Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {category.name}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Take a quiz{" "}
+                      <ArrowForwardIosIcon style={{ fontSize: "0.6em" }} />
+                    </Typography>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </Box>
         </Box>
       </Box>
