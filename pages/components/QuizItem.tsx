@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
+import Link from "next/link";
 
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -9,11 +9,12 @@ import Grid from "@mui/material/Grid";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 interface Props {
-  icon: String;
-  name: String;
+  icon: string;
+  name: string;
+  query: string;
 }
 
-const QuizItem: FunctionComponent<Props> = ({ icon, name }) => {
+const QuizItem: FunctionComponent<Props> = ({ icon, name, query }) => {
   return (
     <Grid item xs={2} sm={1}>
       <Card style={{ textAlign: "center" }}>
@@ -22,13 +23,22 @@ const QuizItem: FunctionComponent<Props> = ({ icon, name }) => {
           <Typography variant="body2" color="text.secondary">
             {name}
           </Typography>
-          <Typography
-            variant="caption"
-            color="#0668FE"
-            style={{ cursor: "pointer" }}
-          >
-            Take a quiz <ArrowForwardIosIcon style={{ fontSize: "0.6em" }} />
-          </Typography>
+          {query !== undefined ? (
+            <Link href={query !== null ? query : "/"} passHref>
+              <a>
+                <Typography
+                  variant="caption"
+                  color="#0668FE"
+                  style={{ cursor: "pointer" }}
+                >
+                  Take a quiz{" "}
+                  <ArrowForwardIosIcon style={{ fontSize: "0.6em" }} />
+                </Typography>
+              </a>
+            </Link>
+          ) : (
+            ""
+          )}
         </CardContent>
       </Card>
     </Grid>
