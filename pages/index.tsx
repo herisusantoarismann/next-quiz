@@ -22,10 +22,16 @@ const Home: NextPage = () => {
         justifyContent: "center",
         flexDirection: "column",
         background: "#EBECEF",
+        minHeight: "100vh",
       }}
     >
       <Header />
-      <Box style={{ margin: "1rem" }}>
+      <Box
+        sx={{
+          width: { xs: "90%", sm: "80%", md: "70%" },
+          margin: "auto",
+        }}
+      >
         <QuizContainer title={"Random Quiz"} data={randomQuiz} />
         <QuizContainer title={"Category"} data={categories} />
       </Box>

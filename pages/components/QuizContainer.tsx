@@ -7,6 +7,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { AnyMxRecord } from "dns";
+import { Grid } from "@mui/material";
 
 interface Props {
   title: String;
@@ -15,7 +17,7 @@ interface Props {
 
 const QuizContainer: FunctionComponent<Props> = ({ title, data }) => {
   return (
-    <Box>
+    <Box sx={{ margin: { xs: "1rem 0", md: "2rem 0" } }}>
       <Typography
         variant="subtitle1"
         color="black"
@@ -24,31 +26,30 @@ const QuizContainer: FunctionComponent<Props> = ({ title, data }) => {
       >
         {title}
       </Typography>
-      <Box
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "20px",
-          padding: "0.5rem 0",
-        }}
-      >
-        {data.map((item: any) => {
+      <Grid container columns={4} spacing={{ xs: 2, sm: 4 }}>
+        {data.map((item: any, index: number) => {
           return (
-            <Card style={{ textAlign: "center" }}>
-              <CardContent>
-                <Typography component="div">{item.icon}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {item.name}
-                </Typography>
-                <Typography variant="caption" color="#0668FE">
-                  Take a quiz{" "}
-                  <ArrowForwardIosIcon style={{ fontSize: "0.6em" }} />
-                </Typography>
-              </CardContent>
-            </Card>
+            <Grid item xs={2} sm={1} key={index}>
+              <Card style={{ textAlign: "center" }}>
+                <CardContent>
+                  <Typography component="h2">{item.icon}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {item.name}
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    color="#0668FE"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Take a quiz{" "}
+                    <ArrowForwardIosIcon style={{ fontSize: "0.6em" }} />
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
           );
         })}
-      </Box>
+      </Grid>
     </Box>
   );
 };

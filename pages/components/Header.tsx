@@ -14,6 +14,10 @@ const Header: NextPage = () => {
           variant="body1"
           color="black"
           component="div"
+          sx={{
+            fontSize: { xs: "1em", md: "1.5em" },
+            padding: { xs: "1rem 0.2rem" },
+          }}
           style={{ fontWeight: 700 }}
         >
           Quiz App
