@@ -1,12 +1,8 @@
 import React from "react";
 import type { NextPage } from "next";
 
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 
 import Header from "./components/Header";
 import QuizContainer from "./components/QuizContainer";
