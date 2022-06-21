@@ -145,9 +145,9 @@ export async function getServerSideProps(context: any) {
   const { category } = context.query;
   let link;
   if (category === "random") {
-    link = "https://the-trivia-api.com/api/questions?limit=5";
+    link = `${process.env.API_DOMAIN}?limit=5`;
   } else {
-    link = `https://the-trivia-api.com/api/questions?categories=${category}&limit=5`;
+    link = `${process.env.API_DOMAIN}?categories=${category}&limit=5`;
   }
   const res = await fetch(link);
   const data = await res.json();
