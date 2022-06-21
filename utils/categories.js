@@ -62,6 +62,8 @@ const categories = [
   },
 ];
 
-const randomQuiz = [{ name: "Random", icon: <ImagesearchRollerIcon /> }];
+const randomQuiz = [
+  { name: "Random", query: "random", icon: <ImagesearchRollerIcon /> },
+];
 
 export { categories, randomQuiz };

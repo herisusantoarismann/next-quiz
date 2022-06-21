@@ -143,9 +143,13 @@ const Category = ({ data }: Props) => {
 
 export async function getServerSideProps(context: any) {
   const { category } = context.query;
-  const res = await fetch(
-    `https://the-trivia-api.com/api/questions?categories=${category}&limit=5`
-  );
+  let link;
+  if (category === "random") {
+    link = "https://the-trivia-api.com/api/questions?limit=5";
+  } else {
+    link = `https://the-trivia-api.com/api/questions?categories=${category}&limit=5`;
+  }
+  const res = await fetch(link);
   const data = await res.json();
 
   return { props: { data } };
