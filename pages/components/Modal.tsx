@@ -18,15 +18,13 @@ const style = {
 
 interface Props {
   openModal: boolean;
-  setOpenModal: () => void;
   result: number;
 }
 
-const ModalComponent = ({ openModal, setOpenModal, result }: Props) => {
+const ModalComponent = ({ openModal, result }: Props) => {
   return (
     <Modal
       open={openModal}
-      onClose={() => setOpenModal(false)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -41,6 +39,9 @@ const ModalComponent = ({ openModal, setOpenModal, result }: Props) => {
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           You managed to answer {result} questions correctly
+        </Typography>
+        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          You redirect after 3 seconds.
         </Typography>
       </Box>
     </Modal>

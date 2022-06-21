@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
+
 import Button from "@mui/material/Button";
 
 import StepperContainer from "./components/StepperContainer";
 import ModalComponent from "./components/Modal";
+import Option from "./components/Option";
 
 interface Quiz {
   question: string;
@@ -29,6 +28,7 @@ const Category = ({ data }: Props) => {
   const [answer, setAnswer] = useState();
   const [question, setQuestion] = useState<any[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const router = useRouter();
 
   const shuffleOption = (correct: string[], incorrect: Array<string>) => {
     let array = [correct, ...incorrect];
@@ -68,6 +68,10 @@ const Category = ({ data }: Props) => {
   const handleResult = () => {
     if (checkAnswer()) setResult(result + 1);
     setOpenModal(true);
+    setTimeout(() => {
+      setOpenModal(false);
+      router.push("/");
+    }, 3000);
   };
 
   useEffect(() => {
@@ -104,25 +108,7 @@ const Category = ({ data }: Props) => {
           <Grid sx={{ margin: { xs: "1rem 0" } }}>
             <Typography>{data[activeStep].question}</Typography>
           </Grid>
-          <FormControl>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="answer"
-              onChange={(e) => handleInput(e)}
-            >
-              {question.map((item: any) => {
-                return (
-                  <FormControlLabel
-                    value={item}
-                    control={<Radio />}
-                    label={item}
-                    key={item}
-                  />
-                );
-              })}
-            </RadioGroup>
-          </FormControl>
+          <Option question={question} handleInput={handleInput} />
           <Box
             style={{
               display: "flex",
@@ -150,11 +136,7 @@ const Category = ({ data }: Props) => {
           </Box>
         </Card>
       </Box>
-      <ModalComponent
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        result={result}
-      />
+      <ModalComponent openModal={openModal} result={result} />
     </Box>
   );
 };
