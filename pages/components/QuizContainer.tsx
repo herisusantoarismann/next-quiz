@@ -23,16 +23,18 @@ const QuizContainer: FunctionComponent<Props> = ({ title, data }) => {
         {title}
       </Typography>
       <Grid container columns={4} spacing={{ xs: 2, sm: 4 }}>
-        {data.map((item: any, index: number) => {
-          return (
-            <QuizItem
-              icon={item.icon}
-              name={item.name}
-              query={item.query}
-              key={index}
-            />
-          );
-        })}
+        {data !== undefined
+          ? data.map((item: any, index: number) => {
+              return (
+                <QuizItem
+                  icon={item.icon}
+                  name={item.name}
+                  query={item.query}
+                  key={index}
+                />
+              );
+            })
+          : ""}
       </Grid>
     </Box>
   );

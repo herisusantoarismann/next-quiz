@@ -18,16 +18,18 @@ const Option = ({ question, handleInput }: Props) => {
         name="answer"
         onChange={(e) => handleInput(e)}
       >
-        {question.map((item: any) => {
-          return (
-            <FormControlLabel
-              value={item}
-              control={<Radio />}
-              label={item}
-              key={item}
-            />
-          );
-        })}
+        {question !== undefined
+          ? question.map((item: any) => {
+              return (
+                <FormControlLabel
+                  value={item}
+                  control={<Radio />}
+                  label={item}
+                  key={item}
+                />
+              );
+            })
+          : ""}
       </RadioGroup>
     </FormControl>
   );
