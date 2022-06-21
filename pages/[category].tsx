@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
 
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
@@ -9,10 +9,9 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
 
-import Header from "./components/Header";
 import StepperContainer from "./components/StepperContainer";
+import ModalComponent from "./components/Modal";
 
 interface Quiz {
   question: string;
@@ -23,18 +22,6 @@ interface Quiz {
 interface Props {
   data: Quiz[];
 }
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: { xs: "90%", sm: "50%" },
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const Category = ({ data }: Props) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -98,7 +85,6 @@ const Category = ({ data }: Props) => {
         display: "flex",
         flexDirection: "column",
         background: "#EBECEF",
-        minHeight: "100vh",
       }}
     >
       <Box
@@ -164,26 +150,11 @@ const Category = ({ data }: Props) => {
           </Box>
         </Card>
       </Box>
-      <Modal
-        open={openModal}
-        onClose={() => setOpenModal(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            style={{ textAlign: "center" }}
-          >
-            Result
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            You managed to answer {result} questions correctly
-          </Typography>
-        </Box>
-      </Modal>
+      <ModalComponent
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        result={result}
+      />
     </Box>
   );
 };
