@@ -75,7 +75,7 @@ const Category = ({ data }: Props) => {
       if (checkAnswer()) setResult(result + 1);
       setActiveStep(activeStep + 1);
     } else {
-      alert("ISI DULU");
+      alert("Choose First!");
     }
   };
 
@@ -109,7 +109,10 @@ const Category = ({ data }: Props) => {
           margin: "2rem auto",
         }}
       >
-        <Stepper activeStep={activeStep}>
+        <Stepper
+          activeStep={activeStep}
+          sx={{ width: { sm: "75%", lg: "50%" }, margin: "0 auto" }}
+        >
           {data.map((label: any, index: number) => {
             return (
               <Step key={index}>
@@ -118,7 +121,13 @@ const Category = ({ data }: Props) => {
             );
           })}
         </Stepper>
-        <Card sx={{ padding: { xs: "1rem" }, margin: { xs: "1rem 0" } }}>
+        <Card
+          sx={{
+            padding: { xs: "1rem" },
+            margin: { xs: "1rem auto" },
+            width: { md: "75%" },
+          }}
+        >
           <Grid sx={{ margin: { xs: "1rem 0" } }}>
             <Typography>{data[activeStep].question}</Typography>
           </Grid>
@@ -135,6 +144,7 @@ const Category = ({ data }: Props) => {
                     value={item}
                     control={<Radio />}
                     label={item}
+                    key={item}
                   />
                 );
               })}
@@ -201,7 +211,7 @@ const Category = ({ data }: Props) => {
 export async function getServerSideProps(context: any) {
   const { category } = context.query;
   const res = await fetch(
-    `https://the-trivia-api.com/api/questions?categories=${category}&limit=10`
+    `https://the-trivia-api.com/api/questions?categories=${category}&limit=5`
   );
   const data = await res.json();
 
