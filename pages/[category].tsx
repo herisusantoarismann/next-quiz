@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
@@ -14,6 +12,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 
 import Header from "./components/Header";
+import StepperContainer from "./components/StepperContainer";
 
 interface Quiz {
   question: string;
@@ -102,25 +101,13 @@ const Category = ({ data }: Props) => {
         minHeight: "100vh",
       }}
     >
-      <Header />
       <Box
         sx={{
           width: { xs: "90%", sm: "80%", md: "70%" },
           margin: "2rem auto",
         }}
       >
-        <Stepper
-          activeStep={activeStep}
-          sx={{ width: { sm: "75%", lg: "50%" }, margin: "0 auto" }}
-        >
-          {data.map((label: any, index: number) => {
-            return (
-              <Step key={index}>
-                <StepLabel></StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
+        <StepperContainer steps={data.length} activeStep={activeStep} />
         <Card
           sx={{
             padding: { xs: "1rem" },
@@ -197,13 +184,6 @@ const Category = ({ data }: Props) => {
           </Typography>
         </Box>
       </Modal>
-      <Typography
-        variant="caption"
-        color="text.secondary"
-        style={{ textAlign: "center", padding: "1rem" }}
-      >
-        &copy; {new Date().getFullYear()}. All Right Reserved.
-      </Typography>
     </Box>
   );
 };
